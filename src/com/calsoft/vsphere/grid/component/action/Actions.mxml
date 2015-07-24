@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="on_creationCompleteHandler(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			public function _priveledgeList:ArrayCollection = new ArrayCollection();
+			
+			[Bindable]
+			public function _actionList:ArrayCollection = new ArrayCollection();
+			
+			public function onSelectionChange():void{
+				
+			}
+			
+			protected function on_creationCompleteHandler(event:FlexEvent):void
+			{
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:HGroup width="100%" height="50" gap="5">
+		
+		<s:HGroup id="globalIcons">
+		</s:HGroup>
+		
+		<mx:VRule width="100%"/>
+		
+		<s:HGroup id="selectedIcons">
+		</s:HGroup>
+		
+		<mx:VRule width="100%"/>
+		
+		
+		
+	</s:HGroup>
+</s:Group>

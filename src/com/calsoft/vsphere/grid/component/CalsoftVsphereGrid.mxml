@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="on_creationCompleteHandler(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.calsoft.vsphere.grid.vo.DgColumInfo;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			public var _data:ArrayCollection = new ArrayCollection();
+			
+			[Bindable]
+			public var _colInfo:ArrayCollection = new ArrayCollection();
+			
+			/**
+			 * This list will hold all the privileges
+			 * for setting action enable/disable we have to check in collection;
+			 */
+			[Bindable]
+			public function _priveledgeList:ArrayCollection = new ArrayCollection();
+			
+			public function setData(data:ArrayCollection):void{
+				this._data = data;
+			}
+			
+			public function getData():ArrayCollection{
+				return this._data;
+			}
+			
+			protected function on_creationCompleteHandler(event:FlexEvent):void
+			{
+				var cols:Array = new Array(); 
+				for each (var col:DgColumInfo in _colInfo) 
+				{
+					var dgC:DataGridColumn = new DataGridColumn;
+					dgC.headerText = col.headerText;
+					dgC.dataField = col.dataField;
+					dgC.sortable = col.sortable;
+					cols.push(dgC);
+				}
+				dg.columns = cols;
+			}
+			
+		]]>
+	</fx:Script>
+	<s:VGroup width="100%" height="100%">
+		
+	<!--Toolbar-->
+	
+	<!--grid-->
+	<mx:DataGrid id="dg" width="100%" height="100%" dataProvider="{_data}">	
+	</mx:DataGrid>
+	<!--footer-->
+	
+	
+	</s:VGroup>
+</s:Group>

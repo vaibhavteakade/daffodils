@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="400" minHeight="400" xmlns:component="com.calsoft.vsphere.grid.component.*" initialize="application1_initializeHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.calsoft.vsphere.grid.vo.DgColumInfo;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			public var _colInfo:ArrayCollection = new ArrayCollection;
+			protected function application1_initializeHandler(event:FlexEvent):void
+			{
+				
+				for(var i:int=0;i<5;i++){
+					var info:DgColumInfo = new DgColumInfo;
+					info.dataField = i+"info";
+					info.headerText = i+"info";
+					_colInfo.addItem(info);
+				}
+				
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<component:CalsoftVsphereGrid width="100%" height="100%"  _colInfo="{_colInfo}"  _data="{null}"/>
+</s:Application>
